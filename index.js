@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
 io.on("connection", (socket) => {
   console.log("a user connected!");
   socket.on("chat message", (msg) => {
-    console.log("msg-- :", msg);
+    io.emit("chat message", msg);
   });
   socket.on("disconnect", () => {
     console.log("a user disconnected!");
